@@ -1,0 +1,69 @@
+\cvsection{ {% emit(publications['title']) %} }
+
+{%
+types = [ 'journal',
+          'conference',
+          'abstracts',
+          'thesis',
+          'posters',
+          'book-chapters',
+          'other-publications',
+          'papers-in-preparation',
+          'talks',
+        ]
+
+nb = 1
+for type in types:
+  if not 'papers' in publications[type]: continue
+  if len(publications[type]['papers']) <= 0: continue
+
+  emit_tex('\cvsubsection')
+  emit_braces(publications[type]['title'])
+
+  emit_tex('\\begin{cvhonors}')
+  emit('\n')
+  for i in publications[type]['papers']:
+    emit_tex('\cvhonor ')
+    emit('\n')
+    emit_braces(i['authors'])
+    emit('\n')
+
+    url = i['url']
+    if url.startswith('/'): url = main['link'] + url
+    text = "{\\textcolor{link}{\href{" + url + "}{\"" + i['title'] + "\"}}, " + i['book'] + "}"
+    emit_tex(text)
+    emit('\n')
+    emit_braces("")
+    emit('\n')
+    emit_braces("[" + str(nb) + "]")
+    emit('\n')
+    emit('\n')
+    nb = nb + 1
+  emit('\n')
+  emit_tex('\end{cvhonors}')
+
+type = 'news'
+emit_tex('\cvsubsection')
+emit_braces(publications[type]['title'])
+
+emit_tex('\\begin{cvhonors}')
+emit('\n')
+for i in publications[type]['papers']:
+  emit_tex('\cvhonor ')
+  emit('\n')
+
+
+  url = i['url']
+  text = "{\\textcolor{link}{\href{" + url + "}{\"" + i['title'] + "\"}}}"
+  emit_tex(text)
+  emit('\n')
+  emit_braces(i['from'])
+  emit('\n')
+  emit_braces("")
+  emit('\n')
+  emit_braces(to_specific_date(i['date']))
+  emit('\n')
+  emit('\n')
+emit('\n')
+emit_tex('\end{cvhonors}')
+%}

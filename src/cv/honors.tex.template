@@ -1,0 +1,11 @@
+\cvsection{ {% emit(awards['title']) %} }
+\begin{cvhonors}
+{%
+  for i in (awards['awards']):
+    emit_tex('\cvhonor ')
+    emit_braces(i['award'])
+    emit_braces(i['event'])
+    emit_braces(i['location'])
+    emit_braces(to_date(i['date']))
+%}
+\end{cvhonors}

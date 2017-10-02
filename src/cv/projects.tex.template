@@ -1,0 +1,25 @@
+\cvsection{{% emit(projects['title']) %}}
+
+\begin{cventries}
+{%
+  for i in projects['projects']:
+    emit_tex('\cventry')
+    emit_braces(i['role'])
+
+    title = '{\href{' + i['url'] + '}{' + i['title'] + '}}'
+    emit_tex(title)
+
+    emit_braces(i['city'])
+    emit_braces(i['duration'])
+    emit_tex('\n{')
+    emit_tex('\\begin{cvitems}')
+    for item in (i['about'].split('\n')):
+      if not item: continue
+      emit_tex('\item ')
+      emit(item)
+      emit_tex('\n')
+    emit_tex('\end{cvitems}')
+    emit_tex('\n}')
+    emit('\n\n')
+%}
+\end{cventries}
