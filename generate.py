@@ -147,7 +147,10 @@ class Generate:
 
     # copy fixed files from src to dst
     def copyFiles(self):
-        shutil.rmtree(self.dst)
+        try:
+            shutil.rmtree(self.dst)
+        except IOError as e:
+            pass
         for root, directories, filenames in os.walk(self.src):
             for filename in filenames:
                 if not filename.endswith(self.extension):

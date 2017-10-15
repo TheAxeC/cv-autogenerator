@@ -219,6 +219,15 @@
 \newcommand*{\honordatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
 \newcommand*{\honorlocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
 
+% For elements of news
+\newcommand*{\newsdatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
+\newcommand*{\newstitlestyle}[3]{{\fontsize{9pt}{1em}\bodyfont\color{graytext}\textcolor{link}{\href{#1}{``#2''}}, #3.}}
+
+% For elements of paper
+\newcommand*{\papertitlestyle}[3]{{\fontsize{9pt}{1em}\bodyfont\color{graytext}\textcolor{link}{\href{#1}{``#2''}}, #3.}}
+\newcommand*{\paperauthorstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\papernbstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
+
 % For elements of skill
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
 \newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
@@ -635,6 +644,44 @@
 % Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
 \newcommand*{\cvhonor}[4]{%
   \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
+}
+
+% Define an environment for cvnews
+\newenvironment{cvnews}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2mm}
+  \renewcommand{\arraystretch}{1.6}% Spread rows out...
+  \begin{center}
+    \setlength\tabcolsep{0pt}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{ C{2.5cm} L{\textwidth - 5.5cm}}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+% Define a line of cv information(honor, award or something else)
+% Usage: \cvnew{<url>}{<title>}{<from>}{<date>}
+\newcommand*{\cvnew}[4]{%
+  \newsdatestyle{#4} & \newstitlestyle{#1}{#2}{#3} \\
+}
+
+% Define an environment for cvpaper
+\newenvironment{cvpapers}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2mm}
+  \renewcommand{\arraystretch}{1.6}% Spread rows out...
+  \begin{center}
+    \setlength\tabcolsep{0pt}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1cm} L{\textwidth - 1cm}}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+% Define a line of cv information(paper or publication)
+% Usage: \cvpaper{<author>}{<url>}{<title>}{<book>}{<nb>}
+\newcommand*{\cvpaper}[5]{%
+  \papernbstyle{#5} & \paperauthorstyle{#1}, \papertitlestyle{#2}{#3}{#4} \\ % & \honorlocationstyle{#3} \\
 }
 
 % Define an environment for cvskill
