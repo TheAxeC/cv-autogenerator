@@ -104,7 +104,8 @@ class Generate:
         self.latex = latex
 
     def parseTemplate(self, filename):
-        template = open(filename).read()
+        with open(filename) as stream:
+            template = stream.read()
         output = Template(template).render(self.context)
         output_file = filename.replace(self.src, self.dst).replace(self.extension, "")
         self.mkdir(output_file)
@@ -115,8 +116,8 @@ class Generate:
         for root, directories, filenames in os.walk(self.data_src):
             for filename in filenames:
                 path = os.path.join(root, filename)
-                stram = open(path, "r")
-                content = yaml.load(stram)
+                with open(path, 'r') as stram:
+                    content = yaml.load(stram)
                 key = os.path.splitext(filename)[0]
                 self.context[key] = content
 
