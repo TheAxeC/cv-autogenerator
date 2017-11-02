@@ -54,23 +54,14 @@
 \photo[circle,noedge,left]{./photo/profile}
 \name{{% emit(main['first-name']) %}}{{% emit(main['last-name']) %}}
 \position{{% emit(main['background']) %}{\enskip\cdotp\enskip}{% emit(main['expert']) %}}
-\address{{% emit(personal['address']) %}}
+\address{{% emit(main['location']) %}}
 
-%\mobile{{% emit(personal['phone']) %}}
 \email{{% emit(main['email']['personal']['email']) %}}
 \homepage{{% emit(main['homepage']) %}}
 \github{{% emit(main['github']['name']) %}}
 \linkedin{{% emit(main['linkedin']['name']) %}}
-% \gitlab{gitlab-id}
-% \stackoverflow{SO-id}{SO-name}
-% \twitter{{% emit(main['twitter']['name']) %}}
 \scholar{{% emit(main['scholar']['name']) %}}
 \kuleuven{{% emit(main['kuleuven']['name']) %}}
-% \skype{skype-id}
-% \reddit{{% emit(main['reddit']['name']) %}}
-% \extrainfo{extra informations}
-
-%\quote{``Be the change that you want to see in the world."}
 
 %-------------------------------------------------------------------------------
 \begin{document}
