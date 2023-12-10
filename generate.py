@@ -2,6 +2,7 @@ import re
 import os
 import shutil
 import yaml
+import errno
 import datetime
 
 # TEMPLITE : http://code.activestate.com/recipes/496702/
@@ -117,7 +118,7 @@ class Generate:
             for filename in filenames:
                 path = os.path.join(root, filename)
                 with open(path, 'r') as stram:
-                    content = yaml.load(stram)
+                    content = yaml.safe_load(stram)
                 key = os.path.splitext(filename)[0]
                 self.context[key] = content
 
@@ -163,11 +164,12 @@ class Generate:
     def compileLatex(self):
         savedPath = os.getcwd()
         os.chdir(self.dst)
-        os.system(self.latex + " -output-directory=" + savedPath + " " + self.main + "")
+        print(self.latex + " -output-directory=" + savedPath + " " + self.main + "")
+        os.system(self.latex + " " + self.main + " -output-directory=" + savedPath)
         os.chdir(savedPath)
-        os.remove(self.main.replace('tex', 'aux'))
-        os.remove(self.main.replace('tex', 'log'))
-        os.remove(self.main.replace('tex', 'out'))
+        # os.remove(self.main.replace('tex', 'aux'))
+        # os.remove(self.main.replace('tex', 'log'))
+        # os.remove(self.main.replace('tex', 'out'))
 
     def run(self):
         self.copyFiles()

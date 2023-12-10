@@ -1,0 +1,90 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template for CV/Resume
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Author:
+% Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+
+
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt, a4paper]{awesome-cv}
+
+\usepackage{xcolor}
+
+% Configure page margins with geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+% Color for highlights
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+\colorlet{awesome}{awesome-red}
+% Uncomment if you would like to specify your own color
+% \definecolor{awesome}{HTML}{CA63A8}
+
+% Colors for text
+% Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{414141}
+% \definecolor{text}{HTML}{333333}
+% \definecolor{graytext}{HTML}{5D5D5D}
+% \definecolor{lighttext}{HTML}{999999}
+\definecolor{link}{HTML}{B509AC}
+
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{true}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%-------------------------------------------------------------------------------
+
+% Available options: circle|rectangle,edge/noedge,left/right
+\photo[circle,noedge,left]{./photo/profile}
+\name{Axel}{Faes}
+\position{Computer Engineer{\enskip\cdotp\enskip}PostDoctoral Researcher}
+\address{Leuven, Belgium}
+
+\email{axel.faes@gmail.com}
+\homepage{theaxec.github.io}
+\github{TheAxeC}
+\linkedin{axelfaes}
+\scholar{abRAHJEAAAAJ}
+\kuleuven{00117812}
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader[L]
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+  {\today}
+  { Axel Faes~~~·~~~Curriculum Vitae}
+  {\thepage}
+
+% \input{cv/summary.tex}
+\input{cv/education.tex}
+% \input{cv/honors.tex}
+\input{cv/experience.tex}
+% \input{cv/extracurricular.tex}
+% \input{cv/skills.tex}
+% \input{cv/projects.tex}
+\input{cv/publications.tex}
+
+%-------------------------------------------------------------------------------
+\end{document}
