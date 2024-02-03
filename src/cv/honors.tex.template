@@ -1,7 +1,7 @@
-\cvsection{ {% emit(awards['title']) %} }
+\cvsection{ {% emit(data['awards']['title']) %} }
 \begin{cvhonors}
 {%
-  for i in (awards['awards']):
+  for i in (data['awards']['content']):
     emit_tex('\cvhonor ')
     emit_braces(i['award'])
     emit_braces(i['event'])

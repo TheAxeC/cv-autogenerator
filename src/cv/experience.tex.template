@@ -1,8 +1,8 @@
-\cvsection{{% emit(experience['title']) %}}
+\cvsection{{% emit(data['experience']['title']) %}}
 
 \begin{cventries}
 {%
-  for i in experience['experience']:
+  for i in data['experience']['content']:
     if (not i['min']) and is_minimal(): continue
     emit_tex('\cventry')
     emit_braces(i['location'])

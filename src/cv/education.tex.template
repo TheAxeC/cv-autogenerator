@@ -1,8 +1,8 @@
-\cvsection{{% emit(education['title']) %}}
+\cvsection{{% emit(data['education']['title']) %}}
 
 \begin{cventries}
 {%
-  for i in education['education']:
+  for i in data['education']['content']:
     if (not i['min']) and is_minimal(): continue
     grade = ''
     if ('grade' in i): grade = ' (' + i['grade'] + ')'

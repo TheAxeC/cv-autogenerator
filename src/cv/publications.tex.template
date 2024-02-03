@@ -29,7 +29,7 @@ for type in types:
     emit('\n')
 
     url = i['url']
-    if url.startswith('/'): url = main['link'] + url
+    if url.startswith('/'): url = data['personal']['website'] + url
     emit_braces(url)
     emit('\n')
 

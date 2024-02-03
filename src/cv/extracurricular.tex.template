@@ -1,7 +1,7 @@
-\cvsection{{% emit(extracurricular['title']) %}}
+\cvsection{{% emit(data['extracurricular']['title']) %}}
 \begin{cvhonors}
 {%
-  for i in (extracurricular['extracurricular']):
+  for i in (data['extracurricular']['content']):
     emit_tex('\cvhonor ')
     emit_braces(i['role'])
     emit_braces(i['about'])

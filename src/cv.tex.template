@@ -53,14 +53,14 @@
 % Available options: circle|rectangle,edge/noedge,left/right
 \photo[circle,edge,left]{./photo/profile}
 
-\name{{% emit(main['first-name']) %}}{{% emit(main['last-name']) %}}
-\position{{% emit(main['background']) %}{\enskip\cdotp\enskip}{% emit(main['expert']) %}{\enskip\cdotp\enskip}{% emit(main['ai']) %}}
+\name{{% emit(data['personal']['first-name']) %}}{{% emit(data['personal']['last-name']) %}}
+\position{{% emit(data['personal']['background']) %}{\enskip\cdotp\enskip}{% emit(data['personal']['expert']) %}{\enskip\cdotp\enskip}{% emit(data['personal']['ai']) %}}
 
-\email{{% emit(main['email']['personal']['email']) %}}
-\homepage{{% emit(main['homepage']) %}}
-\github{{% emit(main['github']['name']) %}}
-\linkedin{{% emit(main['linkedin']['name']) %}}
-\googlescholar{{% emit(main['scholar']['name']) %}}{Research Publications}
+\email{{% emit(data['personal']['links']['email']) %}}
+\homepage{{% emit(data['personal']['links']['website']) %}}
+\github{{% emit(data['personal']['links']['github']) %}}
+\linkedin{{% emit(data['personal']['links']['linkedin']) %}}
+\googlescholar{{% emit(data['personal']['links']['googlescholar']) %}}{Research Publications}
 
 %-------------------------------------------------------------------------------
 \begin{document}
@@ -73,7 +73,7 @@
 % Leave any of these blank if they are not needed
 \makecvfooter
   {} % \today
-  { {% emit(main['name']) %}~~~·~~~Curriculum Vitae}
+  { {% emit(data['personal']['name']) %}~~~·~~~Curriculum Vitae}
   {} % \thepage
  
 \input{cv/experience.tex}
