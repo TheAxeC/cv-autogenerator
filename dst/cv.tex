@@ -51,39 +51,36 @@
 %-------------------------------------------------------------------------------
 
 % Available options: circle|rectangle,edge/noedge,left/right
-\photo[circle,noedge,left]{./photo/profile}
+\photo[circle,edge,left]{./photo/profile}
+
 \name{Axel}{Faes}
-\position{Computer Engineer{\enskip\cdotp\enskip}PostDoctoral Researcher}
-\address{Leuven, Belgium}
+\position{Machine Learning Engineer{\enskip\cdotp\enskip}PostDoctoral Researcher{\enskip\cdotp\enskip}Scientific Coordinator}
 
 \email{axel.faes@gmail.com}
 \homepage{theaxec.github.io}
 \github{TheAxeC}
 \linkedin{axelfaes}
-\scholar{abRAHJEAAAAJ}
-\kuleuven{00117812}
+\googlescholar{abRAHJEAAAAJ}{Research Publications}
 
 %-------------------------------------------------------------------------------
 \begin{document}
 
 % Print the header with above personal informations
 % Give optional argument to change alignment(C: center, L: left, R: right)
-\makecvheader[L]
+\makecvheader[C]
 
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 \makecvfooter
-  {\today}
+  {} % \today
   { Axel Faes~~~·~~~Curriculum Vitae}
-  {\thepage}
-
-\input{cv/summary.tex}
-\input{cv/education.tex}
-\input{cv/honors.tex}
+  {} % \thepage
+ 
 \input{cv/experience.tex}
-\input{cv/extracurricular.tex}
-\input{cv/skills.tex}
+\input{cv/education.tex}
 \input{cv/projects.tex}
+\input{cv/honors.tex}
+\input{cv/extracurricular.tex}
 \input{cv/publications.tex}
 
 %-------------------------------------------------------------------------------

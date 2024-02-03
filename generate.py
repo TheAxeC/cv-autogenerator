@@ -58,7 +58,7 @@ class Template():
         date = datetime.datetime.strptime(str(text), "%Y-%m-%d %H:%M:%S%z")
         return date.strftime("%b. %d, %Y")
 
-    def render(self, context = None, **kw):
+    def render(self, minimal, context = None, **kw):
         """Render the template according to the given context"""
         global_context = {}
         if context: global_context.update(context)
@@ -79,6 +79,10 @@ class Template():
             result.append(fmt % args)
         def list_to_string(arg):
             return " and ".join([", ".join(arg[:-1]),arg[-1]] if len(arg) > 2 else arg)
+        def check_minimal(arg):
+            if not minimal: result.extend(arg)
+        def is_minimal():
+            return minimal
 
         global_context['emit'] = emit
         global_context['fmt_emit'] = fmt_emit
@@ -87,6 +91,8 @@ class Template():
         global_context['to_date'] = to_date
         global_context['to_specific_date'] = to_specific_date
         global_context['list_to_string'] = list_to_string
+        global_context['check_minimal'] = check_minimal
+        global_context['is_minimal'] = is_minimal
 
         # run the code
         result = []
@@ -96,18 +102,19 @@ class Template():
         return ''.join(result)
 
 class Generate:
-    def __init__(self, src, dst, data_src, extension, main, latex):
+    def __init__(self, src, dst, data_src, minimal, extension, main, latex):
         self.src = src
         self.dst = dst
         self.data_src = data_src
         self.extension = extension
         self.main = main
         self.latex = latex
+        self.minimal = minimal
 
     def parseTemplate(self, filename):
         with open(filename) as stream:
             template = stream.read()
-        output = Template(template).render(self.context)
+        output = Template(template).render(self.minimal, self.context)
         output_file = filename.replace(self.src, self.dst).replace(self.extension, "")
         self.mkdir(output_file)
         with open(output_file, "w") as text_file: text_file.write(output)
@@ -191,8 +198,10 @@ def main():
     main_file = "cv.tex"
     # latex command
     latex = "xelatex"
+    # minimal
+    minimal = False
     # create and run the engine
-    engine = Generate(src, dst, data_src, extension, main_file, latex)
+    engine = Generate(src, dst, data_src, minimal, extension, main_file, latex)
     engine.run()
 
 # entry point

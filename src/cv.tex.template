@@ -51,40 +51,37 @@
 %-------------------------------------------------------------------------------
 
 % Available options: circle|rectangle,edge/noedge,left/right
-\photo[circle,noedge,left]{./photo/profile}
+\photo[circle,edge,left]{./photo/profile}
+
 \name{{% emit(main['first-name']) %}}{{% emit(main['last-name']) %}}
-\position{{% emit(main['background']) %}{\enskip\cdotp\enskip}{% emit(main['expert']) %}}
-\address{{% emit(main['location']) %}}
+\position{{% emit(main['background']) %}{\enskip\cdotp\enskip}{% emit(main['expert']) %}{\enskip\cdotp\enskip}{% emit(main['ai']) %}}
 
 \email{{% emit(main['email']['personal']['email']) %}}
 \homepage{{% emit(main['homepage']) %}}
 \github{{% emit(main['github']['name']) %}}
 \linkedin{{% emit(main['linkedin']['name']) %}}
-\scholar{{% emit(main['scholar']['name']) %}}
-\kuleuven{{% emit(main['kuleuven']['name']) %}}
+\googlescholar{{% emit(main['scholar']['name']) %}}{Research Publications}
 
 %-------------------------------------------------------------------------------
 \begin{document}
 
 % Print the header with above personal informations
 % Give optional argument to change alignment(C: center, L: left, R: right)
-\makecvheader[L]
+\makecvheader[C]
 
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 \makecvfooter
-  {\today}
+  {} % \today
   { {% emit(main['name']) %}~~~·~~~Curriculum Vitae}
-  {\thepage}
-
-\input{cv/summary.tex}
-\input{cv/education.tex}
-\input{cv/honors.tex}
+  {} % \thepage
+ 
 \input{cv/experience.tex}
-\input{cv/extracurricular.tex}
-\input{cv/skills.tex}
+\input{cv/education.tex}
 \input{cv/projects.tex}
-\input{cv/publications.tex}
+\input{cv/honors.tex}
+\input{cv/extracurricular.tex}
+{% check_minimal("\input{cv/publications.tex}") %}
 
 %-------------------------------------------------------------------------------
 \end{document}

@@ -1,21 +1,11 @@
 \cvsection{{% emit(extracurricular['title']) %}}
-
-\begin{cventries}
+\begin{cvhonors}
 {%
-  for i in extracurricular['extracurricular']:
-    emit_tex('\cventry')
+  for i in (extracurricular['extracurricular']):
+    emit_tex('\cvhonor ')
     emit_braces(i['role'])
-    emit_braces(i['group'])
-    emit_braces(i['location'])
+    emit_braces(i['about'])
     emit_braces(i['duration'])
-    emit_tex('\n{')
-    emit_tex('\\begin{cvitems}')
-    for item in (i['about']):
-      emit_tex('\item ')
-      emit(item)
-      emit_tex('\n')
-    emit_tex('\end{cvitems}')
-    emit_tex('\n}')
-    emit('\n\n')
+    emit_braces(i['group'])
 %}
-\end{cventries}
+\end{cvhonors}

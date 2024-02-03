@@ -51,23 +51,15 @@ emit_tex('\cvsubsection')
 emit_braces(publications[type]['title'])
 
 emit_tex('\\begin{cvnews}')
-emit('\n')
 for i in publications[type]['papers']:
   emit_tex('\cvnew ')
-  emit('\n')
 
   emit_braces(i['url'])
-  emit('\n')
 
   emit_braces(i['title'])
-  emit('\n')
 
   emit_braces(i['from'])
-  emit('\n')
 
   emit_braces(to_specific_date(i['date']))
-  emit('\n')
-  emit('\n')
-emit('\n')
 emit_tex('\end{cvnews}')
 %}

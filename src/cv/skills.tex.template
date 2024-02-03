@@ -1,9 +1,0 @@
-\cvsection{{% emit(main['natural-languages']['title']) %}}
-\begin{cvskills}
-{%
-  for i in (main['natural-languages']['content']):
-    emit_tex('\cvskill ')
-    emit_braces(i['language'])
-    emit_braces(i['skill'])
-%}
-\end{cvskills}

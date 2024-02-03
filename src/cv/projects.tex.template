@@ -3,9 +3,10 @@
 \begin{cventries}
 {%
   for i in projects['projects']:
+    if (not i['min']) and is_minimal(): continue
     emit_tex('\cventry')
     emit_braces(i['role'])
-
+    
     title = '{\href{' + i['url'] + '}{' + i['title'] + '}}'
     emit_tex(title)
 

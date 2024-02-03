@@ -3,6 +3,7 @@
 \begin{cventries}
 {%
   for i in experience['experience']:
+    if (not i['min']) and is_minimal(): continue
     emit_tex('\cventry')
     emit_braces(i['location'])
     emit_braces(i['title'])
@@ -14,7 +15,6 @@
       if not item: continue
       emit_tex('\item ')
       emit(item)
-      emit_tex('\n')
     emit_tex('\end{cvitems}')
     emit_tex('\n}')
     emit('\n\n')

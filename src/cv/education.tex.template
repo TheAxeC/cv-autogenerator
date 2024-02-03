@@ -3,14 +3,23 @@
 \begin{cventries}
 {%
   for i in education['education']:
+    if (not i['min']) and is_minimal(): continue
     grade = ''
     if ('grade' in i): grade = ' (' + i['grade'] + ')'
     emit_tex('\cventry')
     emit_braces(i['location'])
-    emit_braces(i['title'] + grade)
+    emit_braces(i['title']) # + grade)
     emit_braces(i['city'])
     emit_braces(i['duration'])
-    emit_braces('\n\t\t' + i['specialization'] + '\n')
+    emit_tex('\n{')
+    emit_tex('\\begin{cvitems}')
+    for item in (i['specialization'].split('\n')):
+      if not item: continue
+      emit_tex('\item ')
+      emit(item)
+      emit_tex('\n')
+    emit_tex('\end{cvitems}')
+    emit_tex('\n}')
     emit('\n\n')
 %}
 \end{cventries}

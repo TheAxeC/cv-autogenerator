@@ -172,14 +172,14 @@
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
+\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{24pt}{1em}\headerfontlight\color{graytext} #1}}
+\newcommand*{\headerlastnamestyle}[1]{{\fontsize{24pt}{1em}\headerfont\bfseries\color{text} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
 \newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
-\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
+\newcommand*{\sectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
 \newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
 
@@ -418,8 +418,8 @@
 \newcommand{\acvHeaderAfterQuoteSkip}{5mm}
 
 % Others
-\newcommand{\acvSectionTopSkip}{3mm}
-\newcommand{\acvSectionContentTopSkip}{2.5mm}
+\newcommand{\acvSectionTopSkip}{-2mm}
+\newcommand{\acvSectionContentTopSkip}{0mm}
 
 
 %-------------------------------------------------------------------------------
@@ -447,8 +447,8 @@
     \ifthenelse{\isundefined{\@photo}}{}{%
       \newlength{\photodim}
       \ifthenelse{\equal{\@photoshape}{circle}}%
-        {\setlength{\photodim}{1.3cm}}%
-        {\setlength{\photodim}{1.8cm}}%
+        {\setlength{\photodim}{0.6cm}}% %1.3 CHANGE
+        {\setlength{\photodim}{1.1cm}}% %1.8 CHANGE
       \ifthenelse{\equal{\@photoedge}{edge}}%
         {\def\@photoborder{darkgray}}%
         {\def\@photoborder{none}}%
@@ -464,7 +464,7 @@
     \setlength{\headerphotowidth}{0cm}
   }{%
     \setlength{\headertextwidth}{0.76\textwidth}
-    \setlength{\headerphotowidth}{0.24\textwidth}
+    \setlength{\headerphotowidth}{0.14\textwidth} %0.24 CHANGE
   }%
   \begin{minipage}[c]{\headerphotowidth}%
     \ifthenelse{\equal{\@photoalign}{left}}{\raggedright\drawphoto}{}
@@ -631,7 +631,7 @@
 % Usage: \cvsubsection{<subsection-title>}
 \newcommand{\cvsubsection}[1]{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{-3mm}
+  \vspace{-2mm}
   \subsectionstyle{#1}
   \phantomsection
 }
@@ -656,15 +656,22 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \vspace{-2.0mm}
+  \vspace{-3.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
     \ifempty{#2#3}
       {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
-      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+      {\entrytitlestyle{#2} & \entrylocationstyle{#1} \\
+      \descriptionstyle{#5} & \entrydatestyle{#4} \\}
+    % \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+
+  % \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
+    % \ifempty{#2#3}
+    %   {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+    %   {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+    %   \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+    % \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
   \end{tabular*}%
 }
 
@@ -699,7 +706,7 @@
   \begin{center}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 4.0cm} R{2.5cm}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{2cm} L{\textwidth - 5.5cm} R{3.5cm}}
 }{%
     \end{tabular*}
   \end{center}
@@ -717,8 +724,8 @@
   \renewcommand{\arraystretch}{1.6}% Spread rows out...
   \begin{center}
     \setlength\tabcolsep{0pt}
-    \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{ C{2.5cm} L{\textwidth - 5.5cm}}
+    \setlength{\extrarowheight}{-1mm}
+    \begin{tabular*}{\textwidth}{ C{2.5cm} L{\textwidth - 2.5cm}}
 }{%
     \end{tabular*}
   \end{center}
@@ -732,11 +739,11 @@
 % Define an environment for cvpaper
 \newenvironment{cvpapers}{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{-2mm}
+  \vspace{-1.5mm}
   \renewcommand{\arraystretch}{1.6}% Spread rows out...
   \begin{center}
     \setlength\tabcolsep{0pt}
-    \setlength{\extrarowheight}{0pt}
+    \setlength{\extrarowheight}{-1mm}
     \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1cm} L{\textwidth - 1cm}}
 }{%
     \end{tabular*}
@@ -768,7 +775,7 @@
 
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
-  \vspace{-4.0mm}
+  \vspace{-5.0mm}
   \begin{justify}
   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
     \setlength{\parskip}{0pt}
@@ -776,7 +783,7 @@
 }{%
   \end{itemize}
   \end{justify}
-  \vspace{-4.0mm}
+  \vspace{-5mm}
 }
 
 
