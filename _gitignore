@@ -2,3 +2,4 @@ dst/
 cv.pdf
 
 .DS_Store
+*.log
