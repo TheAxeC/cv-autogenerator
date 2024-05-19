@@ -447,8 +447,8 @@
     \ifthenelse{\isundefined{\@photo}}{}{%
       \newlength{\photodim}
       \ifthenelse{\equal{\@photoshape}{circle}}%
-        {\setlength{\photodim}{0.6cm}}% %1.3 CHANGE
-        {\setlength{\photodim}{1.1cm}}% %1.8 CHANGE
+        {\setlength{\photodim}{0.9cm}}% %1.3 CHANGE
+        {\setlength{\photodim}{1.4cm}}% %1.8 CHANGE
       \ifthenelse{\equal{\@photoedge}{edge}}%
         {\def\@photoborder{darkgray}}%
         {\def\@photoborder{none}}%

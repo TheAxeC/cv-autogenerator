@@ -57,10 +57,11 @@
 \position{{% emit(data['personal']['background']) %}{\enskip\cdotp\enskip}{% emit(data['personal']['expert']) %}{\enskip\cdotp\enskip}{% emit(data['personal']['ai']) %}}
 
 \email{{% emit(data['personal']['links']['email']) %}}
-\homepage{{% emit(data['personal']['links']['website']) %}}
-\github{{% emit(data['personal']['links']['github']) %}}
+\googlescholar{{% emit(data['personal']['links']['googlescholar']) %}}{Scholar}
 \linkedin{{% emit(data['personal']['links']['linkedin']) %}}
-\googlescholar{{% emit(data['personal']['links']['googlescholar']) %}}{Research Publications}
+\github{{% emit(data['personal']['links']['github']) %}}
+\homepage{{% emit(data['personal']['links']['website']) %}}
+\orcid{{% emit(data['personal']['links']['orcid']) %}}
 
 %-------------------------------------------------------------------------------
 \begin{document}
