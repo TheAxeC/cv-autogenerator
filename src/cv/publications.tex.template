@@ -24,6 +24,7 @@ for type in types:
   emit_tex('\\begin{cvpapers}')
   emit('\n')
   for i in publications[type]['papers']:
+    if 'hide' in i and i['hide'] == True: continue
     emit_tex('\cvpaper ')
     emit('\n')
     emit_braces(i['authors'])
