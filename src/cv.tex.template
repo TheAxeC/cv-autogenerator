@@ -51,7 +51,7 @@
 %-------------------------------------------------------------------------------
 
 % Available options: circle|rectangle,edge/noedge,left/right
-\photo[circle,edge,left]{./photo/profile}
+\photo[circle,edge,left]{{% emit(data['personal']['photo_loc']+data['personal']['portrait_url']) %}}
 
 \name{{% emit(data['personal']['first-name']) %}}{{% emit(data['personal']['last-name']) %}}
 \position{{% emit(data['personal']['background']) %}{\enskip\cdotp\enskip}{% emit(data['personal']['expert']) %}{\enskip\cdotp\enskip}{% emit(data['personal']['ai']) %}}

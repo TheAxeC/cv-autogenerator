@@ -3,9 +3,9 @@
 {%
   for i in (data['extracurricular']['content']):
     emit_tex('\cvhonor ')
-    emit_braces(i['role'])
+    emit_braces(i['title'])
     emit_braces(i['about'])
     emit_braces(i['duration'])
-    emit_braces(i['group'])
+    emit_braces(i['location'])
 %}
 \end{cvhonors}

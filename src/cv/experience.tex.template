@@ -7,7 +7,7 @@
     emit_tex('\cventry')
     emit_braces(i['location'])
     emit_braces(i['title'])
-    emit_braces(i['city'])
+    emit_braces('')
     emit_braces(i['duration'])
     emit_tex('\n{')
     emit_tex('\\begin{cvitems}')

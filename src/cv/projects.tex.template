@@ -10,7 +10,7 @@
     title = '{\href{' + i['url'] + '}{' + i['title'] + '}}'
     emit_tex(title)
 
-    emit_braces(i['city'])
+    emit_braces('')
     emit_braces(i['duration'])
     emit_tex('\n{')
     emit_tex('\\begin{cvitems}')

@@ -1,15 +1,16 @@
 \cvsection{ {% emit(publications['title']) %} }
 
 {%
-types = [ 'journal',
-          'conference',
-          'abstracts',
-          'thesis',
-          'posters',
-          'book-chapters',
-          'other-publications',
+types = [ 
           'papers-in-preparation',
-          'talks',
+          'journal',
+          'conference',
+          'thesis',
+          'abstracts',
+          'posters',
+          'other',
+          'other-publications',
+          'students'
         ]
 
 nb = 1
@@ -28,16 +29,24 @@ for type in types:
     emit_braces(i['authors'])
     emit('\n')
 
-    url = i['url']
-    if url.startswith('/'): url = data['personal']['website'] + url
-    emit_braces(url)
-    emit('\n')
+    if 'url' in i and i['url'] != None:
+      url = i['url']
+      if url.startswith('/'): url = data['personal']['website'] + url
+      emit_braces(url)
+      emit('\n')
+    else:
+      emit_braces('')
+      emit('\n')
 
     emit_braces(i['title'])
     emit('\n')
 
-    emit_braces(i['book'])
-    emit('\n')
+    if 'book' in i:
+      emit_braces(i['book'])
+      emit('\n')
+    else:
+      emit_braces('')
+      emit('\n')
 
     emit_braces("[" + str(nb) + "]")
     emit('\n')
